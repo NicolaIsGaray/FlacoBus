@@ -1,0 +1,415 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900");
+
+body {
+  margin: 0;
+  height: 100%;
+  font-family: "Montserrat", serif;
+}
+
+header {
+  background-color: #004aad;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.mobile-version {
+  display: none;
+}
+
+.navbar-name {
+  width: 25%;
+}
+
+.navbar-name h1 {
+  margin: 0;
+  background-color: #00377f;
+  padding: 30px;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  font-family: "Montserrat", serif;
+}
+
+.navbar-name a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.navbar-subtitle {
+  width: 50%;
+  margin: 0;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  font-family: "Montserrat", serif;
+  font-size: 40px;
+}
+
+.btn-switcher {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 8px;
+  width: 120px;
+  height: 40px;
+  padding: 10px;
+  margin: 8px;
+  background-color: #fff;
+  color: #004aad;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: "Montserrat", serif;
+  user-select: none;
+}
+
+.btn-switcher img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  position: absolute;
+}
+
+#city-logo {
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+
+#colony-logo {
+  transform: translateY(-30px);
+  transition: transform 0.3s ease;
+}
+
+#shift-clock {
+  transition: transform 0.3s ease;
+}
+
+.city {
+  position: absolute;
+  transform: translateY(0px);
+  transition: transform 0.3s ease;
+  right: 20.3vw;
+}
+
+.colony {
+  position: absolute;
+  transform: translateY(-30px);
+  transition: transform 0.3s ease;
+  right: 20vw;
+}
+
+.morning {
+  position: absolute;
+  transform: translateY(0px);
+  transition: transform 0.3s ease;
+  right: 13vw;
+}
+
+.afternoon {
+  position: absolute;
+  transform: translateY(-30px);
+  transition: transform 0.3s ease;
+  right: 13.5vw;
+}
+
+.passenger-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.top-section {
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  width: 99.98%;
+}
+
+.months {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  width: 75%;
+  height: 11.5vh;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.month {
+  width: 100%;
+  height: 99.9%;
+  text-align: center;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.passengers {
+  width: 100%;
+  text-align: center;
+}
+
+.passenger-title {
+  background-color: rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  width: 22.85%;
+  text-align: center;
+}
+
+.container-pass {
+  display: flex;
+  flex-direction: row;
+  width: 99.9%;
+}
+
+.passenger {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  width: 30.5%;
+}
+
+.passenger-payout {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  width: 100%;
+}
+
+.month-payment {
+  width: 100%;
+  height: 99.2%;
+  text-align: center;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 480px) {
+  .pc-version .location-switch {
+    display: none;
+  }
+
+  .pc-version .shift-switch {
+    display: none;
+  }
+
+  .pc-version .months {
+    display: none;
+  }
+
+  .passenger-title {
+    display: none;
+  }
+
+  .mobile-version {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mobile-version .location-switch{ 
+    display: flex;
+  }
+
+  .mobile-version .shift-switch{ 
+    display: flex;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+  }
+
+  .navbar-name {
+    width: 100%;
+  }
+
+  .navbar-name h1 {
+    background-color: transparent;
+    padding: 1vh 0;
+    font-size: 20px;
+    border-bottom: 2px solid #fff;
+  }
+
+  .navbar-subtitle {
+    padding: 2vh 0;
+  }
+
+  .navbar-subtitle span {
+    font-size: 40px;
+  }
+
+  .name-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .selectors {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    padding: 10px 0;
+  }
+
+  .selectors div {
+    width: 85%;
+    text-align: center;
+  }
+
+  .month-slider {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .month-slider button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #007bff;
+  }
+
+  .month-slider button:hover {
+    color: #0056b3;
+  }
+
+  .month-slider span {
+    margin: 0 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    width: 150px;
+    text-align: center;
+  }
+  .location-switch {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .location-switch button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #007bff;
+  }
+
+  .location-switch button:hover {
+    color: #0056b3;
+  }
+
+  .location-switch span {
+    margin: 0 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    width: 150px;
+    text-align: center;
+  }
+
+  .shift-switch {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .shift-switch button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #007bff;
+  }
+
+  .shift-switch button:hover {
+    color: #0056b3;
+  }
+
+  .shift-switch span {
+    margin: 0 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    width: 150px;
+    text-align: center;
+  }
+
+  .container-pass {
+    flex-direction: column;
+    align-items: center;
+    margin: 4vh 0;
+    height: 22vh;
+    overflow: hidden;
+  }
+
+  .passenger {
+    width: 92%;
+  }
+
+  .passenger-payout {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .month-payment {
+    width: 100%;
+    height: 12vh;
+    display: none;
+  }
+
+  .month-payment.active {
+    display: flex;
+  }
+
+  .passenger-list {
+    width: 100%;
+    align-items: center;
+    margin: 4vh 0;
+  }
+
+  .passenger-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: lightgray;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    width: 100%;
+    padding: 2vh 0;
+  }
+
+  .passenger-name h3 {
+    margin: 1vh 0;
+  }
+}

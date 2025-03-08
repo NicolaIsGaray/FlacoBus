@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="./styles/management.css" />
+    <title>FLACO BUS</title>
+  </head>
+  <body>
+    <header>
+      <div class="navbar-name">
+        <h1><a href="./index.html">FLACO BUS (TESTING)</a></h1>
+      </div>
+      <div class="navbar-subtitle">
+        <span>ADMINISTRACIÓN</span>
+      </div>
+    </header>
+
+    <section class="administration">
+      <div class="passenger-panel">
+        <div class="top-panel">
+          <div class="panel-title">
+            <h2>Manejo de Pasajeros</h2>
+          </div>
+          <div class="add-passenger">
+            <a href="#adder">Agregar Pasajero</a>
+          </div>
+        </div>
+
+        <div class="passenger-block">
+          <div class="name">
+            <h3>Gabriel Gonzalez</h3>
+          </div>
+          <div class="options">
+            <a class="edit-button" href="#editter">Editar</a>
+            <a class="delete-button">Borrar</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="add-panel" id="adder">
+      <div class="add-passenger-panel">
+        <h2>Agregar Pasajero</h2>
+        <form action="" method="post">
+          <div class="input-field">
+            <label for="name">Nombre del Pasajero (*)</label>
+            <input type="text" id="name" name="name" />
+          </div>
+          <div id="middle-input">
+            <div class="input-field">
+              <label for="pay-check">¿Pagó? (*)</label>
+              <select name="payment" id="pay-check">
+                <option disabled selected>- Seleccione -</option>
+                <option value="Pagó">PAGÓ</option>
+                <option value="NoPagó">NO PAGÓ</option>
+              </select>
+            </div>
+            <div class="input-field">
+              <label for="month-check">Mes (*)</label>
+              <select name="month" id="month-check">
+                <option disabled selected>- Seleccione -</option>
+                <option value="ene">Enero</option>
+                <option value="feb">Febrero</option>
+                <option value="mar">Marzo</option>
+                <option value="abr">Abril</option>
+                <option value="may">Mayo</option>
+                <option value="jun">Junio</option>
+                <option value="jul">Julio</option>
+                <option value="ago">Agosto</option>
+                <option value="sep">Septiembre</option>
+                <option value="oct">Octubre</option>
+                <option value="nov">Noviembre</option>
+                <option value="dic">Diciembre</option>
+              </select>
+            </div>
+            <div class="input-field">
+              <label for="shift">Turno (*)</label>
+              <select name="Turno" id="shift">
+                <option disabled selected>- Seleccione -</option>
+                <option value="morning">Mañana</option>
+                <option value="afternoon">Tarde</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="input-field" id="location-input">
+            <h3>Localidad (*)</h3>
+            <div class="locations">
+              <label for="city">
+                <input type="checkbox" name="ciudad" id="city" />
+                <span>Ciudad</span>
+              </label>
+              <label for="colony">
+                <input type="checkbox" name="colonia" id="colony" />
+                <span>Colonia</span>
+              </label>
+            </div>
+          </div>
+          <input type="submit" value="Registrar" id="register" />
+        </form>
+      </div>
+    </section>
+
+    <section class="add-panel" id="editter">
+        <div class="add-passenger-panel">
+          <h2>Editar Pasajero</h2>
+          <form action="" method="post">
+            <div class="input-field">
+              <label for="name">Nombre del Pasajero</label>
+              <input type="text" id="name" name="name" />
+            </div>
+            <div id="middle-input">
+              <div class="input-field">
+                <label for="pay-check">¿Pagó?</label>
+                <select name="payment" id="pay-check">
+                  <option disabled selected>- Seleccione -</option>
+                  <option value="Pagó">PAGÓ</option>
+                  <option value="NoPagó">NO PAGÓ</option>
+                </select>
+              </div>
+              <div class="input-field">
+                <label for="month-check">Mes</label>
+                <select name="month" id="month-check">
+                  <option disabled selected>- Seleccione -</option>
+                  <option value="ene">Enero</option>
+                  <option value="feb">Febrero</option>
+                  <option value="mar">Marzo</option>
+                  <option value="abr">Abril</option>
+                  <option value="may">Mayo</option>
+                  <option value="jun">Junio</option>
+                  <option value="jul">Julio</option>
+                  <option value="ago">Agosto</option>
+                  <option value="sep">Septiembre</option>
+                  <option value="oct">Octubre</option>
+                  <option value="nov">Noviembre</option>
+                  <option value="dic">Diciembre</option>
+                </select>
+              </div>
+              <div class="input-field">
+                <label for="shift">Turno</label>
+                <select name="Turno" id="shift">
+                  <option disabled selected>- Seleccione -</option>
+                  <option value="morning">Mañana</option>
+                  <option value="afternoon">Tarde</option>
+                </select>
+              </div>
+            </div>
+  
+            <div class="input-field" id="location-input">
+              <h3>Localidad</h3>
+              <div class="locations">
+                <label for="city">
+                  <input type="checkbox" name="ciudad" id="city" />
+                  <span>Ciudad</span>
+                </label>
+                <label for="colony">
+                  <input type="checkbox" name="colonia" id="colony" />
+                  <span>Colonia</span>
+                </label>
+              </div>
+            </div>
+            <input type="submit" value="Editar" id="edit" />
+          </form>
+        </div>
+      </section>
+  </body>
+</html>
