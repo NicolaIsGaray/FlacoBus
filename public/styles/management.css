@@ -4,6 +4,10 @@
   display: none !important;
 }
 
+.mobile-version {
+  display: none;
+}
+
 body {
   margin: 0;
   height: 100%;
@@ -17,6 +21,7 @@ header {
   display: flex;
   flex-direction: row;
   align-items: center;
+  position: fixed;
 }
 
 .navbar-name {
@@ -48,68 +53,96 @@ header {
   font-size: 40px;
 }
 
-.administration {
+.btn-switcher {
   display: flex;
-  margin-top: 8vh;
-  justify-content: center;
-}
-
-.add-panel {
-  display: flex;
-  padding: 10vh 0;
-  justify-content: center;
-}
-
-.top-panel {
-  display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   align-items: center;
-  justify-content: space-between;
-  margin: 0 10vh;
-  color: #fff;
+  gap: 8px;
+  width: 120px;
+  height: 40px;
+  padding: 10px;
+  margin: 8px;
+  background-color: #fff;
+  color: #004aad;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: "Montserrat", serif;
+  user-select: none;
 }
 
-.add-passenger a {
-  color: #fff;
-  text-decoration: none;
-  transition: color 0.3s ease-in-out;
+.btn-switcher img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  position: absolute;
 }
 
-.add-passenger a:hover {
-  color: #d3d3d3;
+#city-logo {
+  transform: translateY(0);
+  transition: transform 0.3s ease;
 }
 
-.passenger-panel {
+#colony-logo {
+  transform: translateY(-30px);
+  transition: transform 0.3s ease;
+}
+
+#shift-clock {
+  transition: transform 0.3s ease;
+}
+
+.city {
+  position: absolute;
+  transform: translateY(0px);
+  transition: transform 0.3s ease;
+  right: 20.3vw;
+}
+
+.colony {
+  position: absolute;
+  transform: translateY(-30px);
+  transition: transform 0.3s ease;
+  right: 20vw;
+}
+
+.morning {
+  position: absolute;
+  transform: translateY(0px);
+  transition: transform 0.3s ease;
+  right: 13vw;
+}
+
+.afternoon {
+  position: absolute;
+  transform: translateY(-30px);
+  transition: transform 0.3s ease;
+  right: 13.5vw;
+}
+
+.add-button-box {
+  background-color: #0054c2;
+  display: flex;
+  justify-content: center;
+  padding-top: 10vh;
+}
+
+.add-new-passenger {
   background-color: #00377f;
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  color: #fff;
-}
-
-.passenger-block {
-  background-color: #004aad;
-  display: flex;
-  padding: 0 10vh;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.options {
-  display: flex;
-  width: 130px;
-  justify-content: space-between;
-}
-
-.options a {
-  color: #fff;
+  color: white;
+  padding: 2vh 3vw;
+  margin: 4vh 0;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  cursor: pointer;
   text-decoration: none;
-  transition: color 0.3s ease-in-out;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
 }
 
-.options a:hover {
-  color: #d3d3d3;
+.add-new-passenger:hover {
+  background-color: #005fdb;
 }
 
 form {
@@ -117,6 +150,30 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+input[type="submit"] {
+  background-color: #fff;
+  color: #000000;
+  padding: 1.5vh 4vw;
+  margin-top: 4vh;
+  border: 2px solid #002352;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 1rem;
+  transition: all 0.3s ease-in-out;
+}
+
+input[type="submit"]:hover {
+  background-color: #002352;
+  color: #fff;
+}
+
+.add-panel {
+  display: flex;
+  justify-content: center;
+  margin: 8vh 0;
 }
 
 .add-passenger-panel {
@@ -152,7 +209,7 @@ form {
 }
 
 .locations label {
-  background-color: #fff;
+  background-color: #9b9b9b;
   color: #000000;
   cursor: pointer;
   padding: 20px;
@@ -186,39 +243,109 @@ form {
   text-align: center;
 }
 
-#register {
-  width: 200px;
-  height: 50px;
-  margin-top: 4vh;
-  background-color: #fff;
-  border: 2px solid #00377f;
-  border-radius: 10px;
+.passenger-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.top-section {
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  width: 99.98%;
+}
+
+.months {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  width: 75%;
+  height: 11.5vh;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.month {
+  width: 100%;
+  height: 99.9%;
+  text-align: center;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.passengers {
+  width: 100%;
+  text-align: center;
+}
+
+.passenger-title {
+  background-color: rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  width: 22.85%;
+  text-align: center;
+}
+
+.container-pass {
+  display: flex;
+  flex-direction: row;
+  width: 99.9%;
+}
+
+.passenger {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  width: 30.5%;
+}
+
+.passenger-payout {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  width: 100%;
+}
+
+.month-payment {
+  width: 100%;
+  height: 99.2%;
+  text-align: center;
   cursor: pointer;
-  font-size: larger;
-  font-weight: bolder;
-  font-family: "Montserrat", "serif";
-  transition: color 0.2s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-#register:hover {
-  color: #00377f;
+.month-payment:hover {
+  text-decoration: underline;
 }
 
-#edit {
-  width: 200px;
-  height: 50px;
-  margin-top: 4vh;
-  background-color: #fff;
-  border: 2px solid #00377f;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: larger;
-  font-weight: bolder;
-  font-family: "Montserrat", "serif";
-}
+@media (max-width: 767px) {
+  .pc-version .location-switch {
+    display: none;
+  }
 
-@media (max-width: 480px) {
-  .pc-version {
+  .pc-version .shift-switch {
+    display: none;
+  }
+
+  .pc-version .months {
+    display: none;
+  }
+
+  .passenger-title {
     display: none;
   }
 
@@ -226,6 +353,14 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .mobile-version .location-switch{ 
+    display: flex;
+  }
+
+  .mobile-version .shift-switch{ 
+    display: flex;
   }
 
   header {
@@ -255,17 +390,161 @@ form {
     font-size: xx-large;
   }
 
+  .add-button-box {
+    padding-top: 15vh;
+  }
+
   .passenger-panel {
     width: 100%;
   }
 
-  .top-panel {
-    margin: 0 10vw;
+  .selectors {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    padding: 10px 0;
+  }
+
+  .selectors div {
+    width: 85%;
     text-align: center;
   }
 
-  .passenger-block {
-    padding: 0 4vw;
+  .month-slider {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .month-slider button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #007bff;
+  }
+
+  .month-slider button:hover {
+    color: #0056b3;
+  }
+
+  .month-slider span {
+    margin: 0 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    width: 150px;
+    text-align: center;
+  }
+  .location-switch {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .location-switch button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #007bff;
+  }
+
+  .location-switch button:hover {
+    color: #0056b3;
+  }
+
+  .location-switch span {
+    margin: 0 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    width: 150px;
+    text-align: center;
+  }
+
+  .shift-switch {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .shift-switch button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #007bff;
+  }
+
+  .shift-switch button:hover {
+    color: #0056b3;
+  }
+
+  .shift-switch span {
+    margin: 0 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    width: 150px;
+    text-align: center;
+  }
+
+  .container-pass {
+    flex-direction: column;
+    align-items: center;
+    margin: 4vh 0;
+    height: 22vh;
+    overflow: hidden;
+  }
+
+  .passenger {
+    width: 95%;
+  }
+
+  .passenger-payout {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .month-payment {
+    width: 100%;
+    height: 12vh;
+    display: none;
+  }
+
+  .month-payment.active {
+    display: flex;
+  }
+
+  .passenger-list {
+    width: 100%;
+    align-items: center;
+    margin: 4vh 0;
+  }
+
+  .passenger-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: lightgray;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    width: 100%;
+    padding: 2vh 0;
+  }
+
+  .passenger-name h3 {
+    margin: 1vh 0;
   }
 
   .add-passenger-panel {
@@ -274,6 +553,6 @@ form {
   }
 
   .input-field input {
-    width: 91%;
+    width: 96%;
   }
 }

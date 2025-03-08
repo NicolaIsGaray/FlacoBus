@@ -201,7 +201,7 @@ header {
   border-right: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-@media (max-width: 480px) {
+@media (max-width: 767px) {
   .pc-version .location-switch {
     display: none;
   }
@@ -375,7 +375,7 @@ header {
   }
 
   .passenger {
-    width: 92%;
+    width: 96%;
   }
 
   .passenger-payout {
