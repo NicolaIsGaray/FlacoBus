@@ -23,16 +23,15 @@ function isAuthenticated(req, res, next) {
 
 adminRoute.use(session({
   secret: KEY,
-  resave: false, // No guardar la sesión si no se modifica
-  saveUninitialized: true, // Guardar sesiones nuevas
+  resave: false,
+  saveUninitialized: true,
   cookie: { 
-    secure: false, // Usar `true` solo si estás usando HTTPS
-    httpOnly: true, // La cookie no es accesible desde JavaScript
-    maxAge: 1000 * 60 * 60 * 24 // La cookie expira en 1 día
+    secure: true,
+    httpOnly: true,
+    maxAge: 1000 * 60 * 60 * 24
   }
 }));
 
-// Generar un código de acceso aleatorio
 function generateAccessCode() {
   return Math.floor(1000 + Math.random() * 9000); // Código de 4 dígitos
 }
@@ -41,7 +40,6 @@ adminRoute.post(GENERATOR, async (req, res) => {
   const code = generateAccessCode();
 
   try {
-    // Guardar el código en la base de datos
     await AccessCode.create({ code });
     console.log(`Nuevo código generado: ${code}`);
     res.status(200).json({ message: "Código generado correctamente" });
@@ -59,7 +57,7 @@ adminRoute.post(VALID, async (req, res) => {
     const validCode = await AccessCode.findOne({ code });
 
     if (validCode) {
-      req.session.isAuthenticated = true; // Almacenar autenticación en la sesión
+      req.session.isAuthenticated = true;
       res.status(200).json({ message: "Código válido" });
     } else {
       res.status(400).json({ message: "Código incorrecto" });
@@ -71,7 +69,6 @@ adminRoute.post(VALID, async (req, res) => {
 });
 
 adminRoute.get(AUTH, (req, res) => {
-  
   if (req.session.isAuthenticated) {
     res.status(200).json({ isAuthenticated: true });
   } else {
@@ -119,7 +116,6 @@ adminRoute.put("/pasajero/:id/pagos", isAuthenticated, async (req, res) => {
   const { id } = req.params;
   const { month, hasPaid } = req.body;
 
-  // Validar que el mes sea válido
   const validMonths = [
     "ene",
     "feb",
@@ -139,7 +135,6 @@ adminRoute.put("/pasajero/:id/pagos", isAuthenticated, async (req, res) => {
     return res.status(400).json({ message: "Mes no válido" });
   }
 
-  // Validar que hasPaid sea un booleano
   if (typeof hasPaid !== "boolean") {
     return res
       .status(400)
@@ -149,7 +144,6 @@ adminRoute.put("/pasajero/:id/pagos", isAuthenticated, async (req, res) => {
   }
 
   try {
-    // Buscar al pasajero por su ID
     const pasajero = await Pasajero.findById(id);
     if (!pasajero) {
       return res.status(404).json({ message: "Pasajero no encontrado" });
@@ -158,7 +152,6 @@ adminRoute.put("/pasajero/:id/pagos", isAuthenticated, async (req, res) => {
     pasajero.payments[month] = hasPaid;
     await pasajero.save();
 
-    // Respuesta exitosa
     res.status(200).json({ message: "Pago actualizado", pasajero });
   } catch (error) {
     console.error("Error al actualizar el pago:", error); // Depuración
