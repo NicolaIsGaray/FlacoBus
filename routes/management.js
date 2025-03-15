@@ -15,7 +15,7 @@ const AUTH = process.env.AUTHER;
 const KEY = process.env.KEY_INDEX;
 
 const MONGO_U = process.env.MONGO_USR;
-const MONGO_P = process.env.MONGO_PSWRD
+const MONGO_P = process.env.MONGO_PSWRD;
 
 adminRoute.use(
   session({
@@ -28,14 +28,44 @@ adminRoute.use(
       ttl: 14 * 24 * 60 * 60,
     }),
     cookie: {
-      secure: true,
+      secure: false,
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24 * 14, // 14 días
     },
   })
 );
 
+// Endpoint para validar el código de acceso
+adminRoute.post(VALID, async (req, res) => {
+  const { code } = req.body;
+
+  try {
+    const validCode = await AccessCode.findOne({ code });
+
+    if (validCode) {
+      req.session.isAuthenticated = true; // Establece la autenticación
+      console.log("Sesión guardada:", req.session); // Depuración
+
+      // Guarda la sesión manualmente
+      req.session.save((err) => {
+        if (err) {
+          console.error("Error al guardar la sesión:", err);
+          return res.status(500).json({ message: "Error al guardar la sesión" });
+        }
+
+        res.status(200).json({ message: "Código válido" });
+      });
+    } else {
+      res.status(400).json({ message: "Código incorrecto" });
+    }
+  } catch (error) {
+    console.error("Error al validar el código:", error);
+    res.status(500).json({ message: "Error al validar el código" });
+  }
+});
+
 function isAuthenticated(req, res, next) {
+  console.log("Sesión guardada F:", req.session); // Depuración
   if (req.session.isAuthenticated) {
     next();
   } else {
@@ -57,25 +87,6 @@ adminRoute.post(GENERATOR, async (req, res) => {
   } catch (error) {
     console.error("Error al guardar el código:", error);
     res.status(500).json({ message: "Error al generar el código" });
-  }
-});
-
-// Endpoint para validar el código de acceso
-adminRoute.post(VALID, async (req, res) => {
-  const { code } = req.body;
-
-  try {
-    const validCode = await AccessCode.findOne({ code });
-
-    if (validCode) {
-      req.session.isAuthenticated = true;
-      res.status(200).json({ message: "Código válido" });
-    } else {
-      res.status(400).json({ message: "Código incorrecto" });
-    }
-  } catch (error) {
-    console.error("Error al validar el código:", error);
-    res.status(500).json({ message: "Error al validar el código" });
   }
 });
 
