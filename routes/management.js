@@ -17,14 +17,6 @@ const KEY = process.env.KEY_INDEX;
 const MONGO_U = process.env.MONGO_USR;
 const MONGO_P = process.env.MONGO_PSWRD
 
-function isAuthenticated(req, res, next) {
-  if (req.session.isAuthenticated) {
-    next();
-  } else {
-    res.status(401).json({ message: "No autenticado" });
-  }
-}
-
 adminRoute.use(
   session({
     secret: KEY,
@@ -42,6 +34,14 @@ adminRoute.use(
     },
   })
 );
+
+function isAuthenticated(req, res, next) {
+  if (req.session.isAuthenticated) {
+    next();
+  } else {
+    res.status(401).json({ message: "No autenticado" });
+  }
+}
 
 function generateAccessCode() {
   return Math.floor(1000 + Math.random() * 9000); // Código de 4 dígitos
