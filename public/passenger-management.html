@@ -4,444 +4,201 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="./styles/management.css" />
+    <link rel="shortcut icon" href="icon.ico" type="image/x-icon">
     <title>FLACO BUS</title>
   </head>
   <body>
-    <header class="pc-version">
-      <div class="navbar-name">
-        <h1><a href="./index.html">FLACO BUS (TESTING)</a></h1>
-      </div>
-      <div class="navbar-subtitle">
-        <span>ADMINISTRACIÓN</span>
-      </div>
-      <div class="location-switch">
-        <button type="button" class="btn-switcher" id="location-switcher">
-          <img
-            src="./media/icons/city-solid.svg"
-            alt="City-Switch"
-            id="city-logo"
+    <div id="codeFormContainer">
+      <div class="form-container">
+        <form id="codeForm">
+          <h1>FLACO BUS</h1>
+          <h3>Verificación</h3>
+          <label for="code">Ingrese el código de acceso:</label>
+          <input
+            type="text"
+            id="code"
+            name="code"
+            required
+            autocomplete="off"
           />
-          <img
-            src="./media/icons/house-solid.svg"
-            alt="Colony-Switch"
-            id="colony-logo"
-          />
-          <span class="city" id="active-location">CIUDAD</span>
-          <span class="colony">COLONIA</span>
-        </button>
+          <button type="submit">Ingresar</button>
+        </form>
+        <p id="message"></p>
       </div>
-      <div class="shift-switch">
-        <button type="button" class="btn-switcher" id="shift-switcher">
-          <img
-            src="./media/icons/clock.svg"
-            alt="Shift-Switch"
-            id="shift-clock"
-          />
-          <span class="morning" id="active-shift">MAÑANA</span>
-          <span class="afternoon">TARDE</span>
-        </button>
-      </div>
-    </header>
-
-    <div class="add-button-box">
-      <a href="#adder" class="add-new-passenger">+ Agregar Nuevo Pasajero</a>
     </div>
 
-    <section class="passenger-list pc-version">
-      <div class="top-section">
-        <div class="passenger-title">
-          <h1>Pasajeros</h1>
+    <section id="adminContent">
+      <header class="pc-version">
+        <div class="navbar-name">
+          <h1><a href="./index.html">FLACO BUS</a></h1>
         </div>
-        <div class="months">
-          <div class="month">
-            <h3>Enero</h3>
-          </div>
-          <div class="month">
-            <h3>Febrero</h3>
-          </div>
-          <div class="month">
-            <h3>Marzo</h3>
-          </div>
-          <div class="month">
-            <h3>Abril</h3>
-          </div>
-          <div class="month">
-            <h3>Mayo</h3>
-          </div>
-          <div class="month">
-            <h3>Junio</h3>
-          </div>
-          <div class="month">
-            <h3>Julio</h3>
-          </div>
-          <div class="month">
-            <h3>Agosto</h3>
-          </div>
-          <div class="month">
-            <h3>Septiembre</h3>
-          </div>
-          <div class="month">
-            <h3>Octubre</h3>
-          </div>
-          <div class="month">
-            <h3>Noviembre</h3>
-          </div>
-          <div class="month">
-            <h3>Diciembre</h3>
-          </div>
+        <div class="navbar-subtitle">
+          <span>ADMINISTRACIÓN</span>
         </div>
+        <div class="location-switch">
+          <button type="button" class="btn-switcher" id="location-switcher">
+            <img
+              src="./media/icons/city-solid.svg"
+              alt="City-Switch"
+              id="city-logo"
+            />
+            <img
+              src="./media/icons/house-solid.svg"
+              alt="Colony-Switch"
+              id="colony-logo"
+            />
+            <span class="city" id="active-location">CIUDAD</span>
+            <span class="colony">COLONIA</span>
+          </button>
+        </div>
+        <div class="shift-switch">
+          <button type="button" class="btn-switcher" id="shift-switcher">
+            <img
+              src="./media/icons/clock.svg"
+              alt="Shift-Switch"
+              id="shift-clock"
+            />
+            <span class="morning" id="active-shift">MAÑANA</span>
+            <span class="afternoon">TARDE</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="sliding">
+        <a href="#adminContent">
+          ^
+        </a>
       </div>
 
-      <section class="mobile-version">
-        <div class="name-section">
-          <h2>PASAJEROS</h2>
+      <div class="add-button-box">
+        <a href="#adder" class="add-new-passenger">+ Agregar Nuevo Pasajero</a>
+      </div>
+
+      <section class="passenger-list pc-version">
+        <div class="top-section">
+          <div class="passenger-title">
+            <h1>Pasajeros</h1>
+          </div>
+          <div class="months">
+            <div class="month">
+              <h3>Enero</h3>
+            </div>
+            <div class="month">
+              <h3>Febrero</h3>
+            </div>
+            <div class="month">
+              <h3>Marzo</h3>
+            </div>
+            <div class="month">
+              <h3>Abril</h3>
+            </div>
+            <div class="month">
+              <h3>Mayo</h3>
+            </div>
+            <div class="month">
+              <h3>Junio</h3>
+            </div>
+            <div class="month">
+              <h3>Julio</h3>
+            </div>
+            <div class="month">
+              <h3>Agosto</h3>
+            </div>
+            <div class="month">
+              <h3>Septiembre</h3>
+            </div>
+            <div class="month">
+              <h3>Octubre</h3>
+            </div>
+            <div class="month">
+              <h3>Noviembre</h3>
+            </div>
+            <div class="month">
+              <h3>Diciembre</h3>
+            </div>
+          </div>
         </div>
-        <div class="selectors">
-          <div class="location-switch">
-            <button id="prevLocation">&lt;</button>
-            <span id="currentLocation">Ciudad</span>
-            <button id="nextLocation">&gt;</button>
+
+        <section class="mobile-version">
+          <div class="name-section">
+            <h2>PASAJEROS</h2>
           </div>
-          <div class="shift-switch">
-            <button id="prevShift">&lt;</button>
-            <span id="currentShift">Mañana</span>
-            <button id="nextShift">&gt;</button>
+          <div class="selectors">
+            <div class="location-switch">
+              <button id="prevLocation">&lt;</button>
+              <span id="currentLocation">Ciudad</span>
+              <button id="nextLocation">&gt;</button>
+            </div>
+            <div class="shift-switch">
+              <button id="prevShift">&lt;</button>
+              <span id="currentShift">Mañana</span>
+              <button id="nextShift">&gt;</button>
+            </div>
+            <div class="month-slider">
+              <button id="prevMonth">&lt;</button>
+              <span id="currentMonth">Mes</span>
+              <button id="nextMonth">&gt;</button>
+            </div>
           </div>
-          <div class="month-slider">
-            <button id="prevMonth">&lt;</button>
-            <span id="currentMonth">Mes</span>
-            <button id="nextMonth">&gt;</button>
-          </div>
+        </section>
+
+        <div class="passengers">
+          <div class="passenger-container section-city" id="morning-city"></div>
+          <div
+            class="passenger-container section-city"
+            id="afternoon-city"
+          ></div>
+          <div
+            class="passenger-container section-colony"
+            id="morning-colony"
+          ></div>
+          <div
+            class="passenger-container section-colony"
+            id="afternoon-colony"
+          ></div>
         </div>
       </section>
 
-      <div class="passengers">
-        <div class="passenger-container section-city" id="morning-city">
-          <div class="container-pass">
-            <div class="passenger">
-              <div class="passenger-name">
-                <h3>CIUDAD MAÑANA (test)</h3>
-              </div>
-            </div>
-            <div class="passenger-payout">
-              <div class="month-payment ene">PAGÓ</div>
-              <div class="month-payment feb">NO PAGÓ</div>
-              <div class="month-payment mar">PAGÓ</div>
-              <div class="month-payment abr">PAGÓ</div>
-              <div class="month-payment may">NO PAGÓ</div>
-              <div class="month-payment jun">NO PAGÓ</div>
-              <div class="month-payment jul">NO PAGÓ</div>
-              <div class="month-payment ago">PAGÓ</div>
-              <div class="month-payment sep">PAGÓ</div>
-              <div class="month-payment oct">&nbsp;</div>
-              <div class="month-payment nov">&nbsp;</div>
-              <div class="month-payment dic">&nbsp;</div>
-            </div>
-          </div>
-
-          <div class="container-pass">
-            <div class="passenger">
-              <div class="passenger-name">
-                <h3>Jose Díaz</h3>
-              </div>
-            </div>
-            <div class="passenger-payout">
-              <div class="month-payment ene">PAGÓ</div>
-              <div class="month-payment feb">NO PAGÓ</div>
-              <div class="month-payment mar">PAGÓ</div>
-              <div class="month-payment abr">PAGÓ</div>
-              <div class="month-payment may">NO PAGÓ</div>
-              <div class="month-payment jun">PAGÓ</div>
-              <div class="month-payment jul">PAGÓ</div>
-              <div class="month-payment ago">NO PAGÓ</div>
-              <div class="month-payment sep">NO PAGÓ</div>
-              <div class="month-payment oct">PAGÓ</div>
-              <div class="month-payment nov">&nbsp;</div>
-              <div class="month-payment dic">&nbsp;</div>
-            </div>
-          </div>
-          <div class="container-pass">
-            <div class="passenger">
-              <div class="passenger-name">
-                <h3>Gabriel Gonzalez</h3>
-              </div>
-            </div>
-            <div class="passenger-payout">
-              <div class="month-payment ene">PAGÓ</div>
-              <div class="month-payment feb">NO PAGÓ</div>
-              <div class="month-payment mar">PAGÓ</div>
-              <div class="month-payment abr">PAGÓ</div>
-              <div class="month-payment may">NO PAGÓ</div>
-              <div class="month-payment jun">NO PAGÓ</div>
-              <div class="month-payment jul">NO PAGÓ</div>
-              <div class="month-payment ago">NO PAGÓ</div>
-              <div class="month-payment sep">NO PAGÓ</div>
-              <div class="month-payment oct">PAGÓ</div>
-              <div class="month-payment nov">PAGÓ</div>
-              <div class="month-payment dic">&nbsp;</div>
-            </div>
-          </div>
-        </div>
-        <div class="passenger-container section-city" id="afternoon-city">
-          <div class="container-pass">
-            <div class="passenger">
-              <div class="passenger-name">
-                <h3>CIUDAD TARDE (test)</h3>
-              </div>
-            </div>
-            <div class="passenger-payout">
-              <div class="month-payment ene">PAGÓ</div>
-              <div class="month-payment feb">NO PAGÓ</div>
-              <div class="month-payment mar">PAGÓ</div>
-              <div class="month-payment abr">PAGÓ</div>
-              <div class="month-payment may">PAGÓ</div>
-              <div class="month-payment jun">PAGÓ</div>
-              <div class="month-payment jul">PAGÓ</div>
-              <div class="month-payment ago">NO PAGÓ</div>
-              <div class="month-payment sep">NO PAGÓ</div>
-              <div class="month-payment oct">NO PAGÓ</div>
-              <div class="month-payment nov">NO PAGÓ</div>
-              <div class="month-payment dic">PAGÓ</div>
-            </div>
-          </div>
-
-          <div class="container-pass">
-            <div class="passenger">
-              <div class="passenger-name">
-                <h3>Jose Díaz</h3>
-              </div>
-            </div>
-            <div class="passenger-payout">
-              <div class="month-payment ene">PAGÓ</div>
-              <div class="month-payment feb">NO PAGÓ</div>
-              <div class="month-payment mar">PAGÓ</div>
-              <div class="month-payment abr">PAGÓ</div>
-              <div class="month-payment may">PAGÓ</div>
-              <div class="month-payment jun">PAGÓ</div>
-              <div class="month-payment jul">PAGÓ</div>
-              <div class="month-payment ago">PAGÓ</div>
-              <div class="month-payment sep">PAGÓ</div>
-              <div class="month-payment oct">PAGÓ</div>
-              <div class="month-payment nov">NO PAGÓ</div>
-              <div class="month-payment dic">NO PAGÓ</div>
-            </div>
-          </div>
-          <div class="container-pass">
-            <div class="passenger">
-              <div class="passenger-name">
-                <h3>Gabriel Gonzalez</h3>
-              </div>
-            </div>
-            <div class="passenger-payout">
-              <div class="month-payment ene">PAGÓ</div>
-              <div class="month-payment feb">NO PAGÓ</div>
-              <div class="month-payment mar">PAGÓ</div>
-              <div class="month-payment abr">PAGÓ</div>
-              <div class="month-payment may">NO PAGÓ</div>
-              <div class="month-payment jun">NO PAGÓ</div>
-              <div class="month-payment jul">NO PAGÓ</div>
-              <div class="month-payment ago">NO PAGÓ</div>
-              <div class="month-payment sep">PAGÓ</div>
-              <div class="month-payment oct">PAGÓ</div>
-              <div class="month-payment nov">PAGÓ</div>
-              <div class="month-payment dic">PAGÓ</div>
-            </div>
-          </div>
-        </div>
-        <div class="passenger-container section-colony" id="morning-colony">
-          <div class="container-pass">
-            <div class="passenger">
-              <div class="passenger-name">
-                <h3>COLONIA MAÑANA (test)</h3>
-              </div>
-            </div>
-            <div class="passenger-payout">
-              <div class="month-payment ene">PAGÓ</div>
-              <div class="month-payment feb">NO PAGÓ</div>
-              <div class="month-payment mar">PAGÓ</div>
-              <div class="month-payment abr">PAGÓ</div>
-              <div class="month-payment may">PAGÓ</div>
-              <div class="month-payment jun">PAGÓ</div>
-              <div class="month-payment jul">PAGÓ</div>
-              <div class="month-payment ago">PAGÓ</div>
-              <div class="month-payment sep">PAGÓ</div>
-              <div class="month-payment oct">PAGÓ</div>
-              <div class="month-payment nov">PAGÓ</div>
-              <div class="month-payment dic">PAGÓ</div>
-            </div>
-          </div>
-          <div class="container-pass">
-            <div class="passenger">
-              <div class="passenger-name">
-                <h3>Fabian Herrera</h3>
-              </div>
-            </div>
-            <div class="passenger-payout">
-              <div class="month-payment ene">PAGÓ</div>
-              <div class="month-payment feb">NO PAGÓ</div>
-              <div class="month-payment mar">PAGÓ</div>
-              <div class="month-payment abr">PAGÓ</div>
-              <div class="month-payment may">NO PAGÓ</div>
-              <div class="month-payment jun">NO PAGÓ</div>
-              <div class="month-payment jul">NO PAGÓ</div>
-              <div class="month-payment ago">NO PAGÓ</div>
-              <div class="month-payment sep">NO PAGÓ</div>
-              <div class="month-payment oct">NO PAGÓ</div>
-              <div class="month-payment nov">NO PAGÓ</div>
-              <div class="month-payment dic">NO PAGÓ</div>
-            </div>
-          </div>
-
-          <div class="container-pass">
-            <div class="passenger">
-              <div class="passenger-name">
-                <h3>Gastón Hodar</h3>
-              </div>
-            </div>
-            <div class="passenger-payout">
-              <div class="month-payment ene">PAGÓ</div>
-              <div class="month-payment feb">NO PAGÓ</div>
-              <div class="month-payment mar">PAGÓ</div>
-              <div class="month-payment abr">PAGÓ</div>
-              <div class="month-payment may">&nbsp;</div>
-              <div class="month-payment jun">&nbsp;</div>
-              <div class="month-payment jul">&nbsp;</div>
-              <div class="month-payment ago">&nbsp;</div>
-              <div class="month-payment sep">&nbsp;</div>
-              <div class="month-payment oct">&nbsp;</div>
-              <div class="month-payment nov">&nbsp;</div>
-              <div class="month-payment dic">&nbsp;</div>
-            </div>
-          </div>
-          <div class="container-pass">
-            <div class="passenger">
-              <div class="passenger-name">
-                <h3>Susana Robles</h3>
-              </div>
-            </div>
-            <div class="passenger-payout">
-              <div class="month-payment ene">PAGÓ</div>
-              <div class="month-payment feb">NO PAGÓ</div>
-              <div class="month-payment mar">PAGÓ</div>
-              <div class="month-payment abr">PAGÓ</div>
-              <div class="month-payment may">&nbsp;</div>
-              <div class="month-payment jun">&nbsp;</div>
-              <div class="month-payment jul">&nbsp;</div>
-              <div class="month-payment ago">&nbsp;</div>
-              <div class="month-payment sep">&nbsp;</div>
-              <div class="month-payment oct">&nbsp;</div>
-              <div class="month-payment nov">&nbsp;</div>
-              <div class="month-payment dic">&nbsp;</div>
-            </div>
-          </div>
-        </div>
-        <div class="passenger-container section-colony" id="afternoon-colony">
-          <div class="container-pass">
-            <div class="passenger">
-              <div class="passenger-name">
-                <h3>COLONIA TARDE (test)</h3>
-              </div>
-            </div>
-            <div class="passenger-payout">
-              <div class="month-payment ene">PAGÓ</div>
-              <div class="month-payment feb">NO PAGÓ</div>
-              <div class="month-payment mar">PAGÓ</div>
-              <div class="month-payment abr">PAGÓ</div>
-              <div class="month-payment may">&nbsp;</div>
-              <div class="month-payment jun">&nbsp;</div>
-              <div class="month-payment jul">&nbsp;</div>
-              <div class="month-payment ago">&nbsp;</div>
-              <div class="month-payment sep">&nbsp;</div>
-              <div class="month-payment oct">&nbsp;</div>
-              <div class="month-payment nov">&nbsp;</div>
-              <div class="month-payment dic">&nbsp;</div>
-            </div>
-          </div>
-
-          <div class="container-pass">
-            <div class="passenger">
-              <div class="passenger-name">
-                <h3>Jose Díaz</h3>
-              </div>
-            </div>
-            <div class="passenger-payout">
-              <div class="month-payment ene">PAGÓ</div>
-              <div class="month-payment feb">NO PAGÓ</div>
-              <div class="month-payment mar">PAGÓ</div>
-              <div class="month-payment abr">PAGÓ</div>
-              <div class="month-payment may">&nbsp;</div>
-              <div class="month-payment jun">&nbsp;</div>
-              <div class="month-payment jul">&nbsp;</div>
-              <div class="month-payment ago">&nbsp;</div>
-              <div class="month-payment sep">&nbsp;</div>
-              <div class="month-payment oct">&nbsp;</div>
-              <div class="month-payment nov">&nbsp;</div>
-              <div class="month-payment dic">&nbsp;</div>
-            </div>
-          </div>
-          <div class="container-pass">
-            <div class="passenger">
-              <div class="passenger-name">
-                <h3>Gabriel Gonzalez</h3>
-              </div>
-            </div>
-            <div class="passenger-payout">
-              <div class="month-payment ene">PAGÓ</div>
-              <div class="month-payment feb">NO PAGÓ</div>
-              <div class="month-payment mar">PAGÓ</div>
-              <div class="month-payment abr">PAGÓ</div>
-              <div class="month-payment may">&nbsp;</div>
-              <div class="month-payment jun">&nbsp;</div>
-              <div class="month-payment jul">&nbsp;</div>
-              <div class="month-payment ago">&nbsp;</div>
-              <div class="month-payment sep">&nbsp;</div>
-              <div class="month-payment oct">&nbsp;</div>
-              <div class="month-payment nov">&nbsp;</div>
-              <div class="month-payment dic">&nbsp;</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="add-panel" id="adder">
-      <div class="add-passenger-panel">
-        <h2>Agregar Pasajero</h2>
-        <form action="" method="post">
-          <div class="input-field">
-            <label for="name">Nombre del Pasajero (*)</label>
-            <input type="text" id="name" name="name" />
-          </div>
-          <div id="middle-input">
+      <section class="add-panel" id="adder">
+        <div class="add-passenger-panel">
+          <h2>Agregar Pasajero</h2>
+          <form action="" method="post">
             <div class="input-field">
-              <label for="shift">Turno (*)</label>
-              <select name="Turno" id="shift">
-                <option disabled selected>- Seleccione -</option>
-                <option value="morning">Mañana</option>
-                <option value="afternoon">Tarde</option>
-              </select>
+              <label for="name">Nombre del Pasajero (*)</label>
+              <input type="text" id="name" name="name" autocomplete="off" />
             </div>
-          </div>
+            <div id="middle-input">
+              <div class="input-field">
+                <label for="shift">Turno (*)</label>
+                <select name="Turno" id="shift">
+                  <option disabled selected>- Seleccione -</option>
+                  <option value="morning">Mañana</option>
+                  <option value="afternoon">Tarde</option>
+                </select>
+              </div>
+            </div>
 
-          <div class="input-field" id="location-input">
-            <h3>Localidad (*)</h3>
-            <div class="locations">
-              <label for="city">
-                <input type="checkbox" name="ciudad" id="city" />
-                <span>Ciudad</span>
-              </label>
-              <label for="colony">
-                <input type="checkbox" name="colonia" id="colony" />
-                <span>Colonia</span>
-              </label>
+            <div class="input-field" id="location-input">
+              <h3>Localidad (*)</h3>
+              <div class="locations">
+                <label for="city">
+                  <input type="checkbox" name="Ciudad" id="city" />
+                  <span>Ciudad</span>
+                </label>
+                <label for="colony">
+                  <input type="checkbox" name="Colonia" id="colony" />
+                  <span>Colonia</span>
+                </label>
+              </div>
             </div>
-          </div>
-          <input type="submit" value="Registrar" id="register" />
-        </form>
-      </div>
+            <input type="submit" value="Registrar" id="register" />
+          </form>
+        </div>
+      </section>
     </section>
   </body>
 
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="./js/management.js"></script>
 </html>

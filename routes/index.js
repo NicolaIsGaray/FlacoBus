@@ -4,7 +4,6 @@ const router = express.Router();
 router.use(express.json());
 
 const rutaAdmin = require("./management");
-// const rutaPasajeros = require("./pasajeros");
 
 router.get('/home', async (req, res) => {
     try {
@@ -14,7 +13,6 @@ router.get('/home', async (req, res) => {
     }
 })
 
-// router.use('/admin', rutaAdmin);
-// router.use('/pasajeros', rutaPasajeros);
+router.use('/admin', rutaAdmin);
 
 module.exports = router;

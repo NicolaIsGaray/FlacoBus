@@ -4,12 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="shortcut icon" href="icon.ico" type="image/x-icon">
     <title>FLACO BUS</title>
   </head>
   <body>
     <header class="pc-version">
       <div class="navbar-name">
-        <h1><a href="./index.html">FLACO BUS (TESTING)</a></h1>
+        <h1><a href="./index.html">FLACO BUS</a></h1>
       </div>
       <div class="navbar-subtitle">
         <span>PAGOS</span>
@@ -43,7 +44,13 @@
       </div>
     </header>
 
-    <section class="passenger-list pc-version">
+    <div class="sliding">
+      <a href="#top">
+        ^
+      </a>
+    </div>
+
+    <section class="passenger-list pc-version" id="top">
       <div class="top-section">
         <div class="passenger-title">
           <h1>Pasajeros</h1>
@@ -109,298 +116,23 @@
             <button id="nextMonth">&gt;</button>
           </div>
         </div>
-
       </section>
 
       <div class="passengers">
-        <div class="passenger-container section-city" id="morning-city">
-          <div class="container-pass">
-            <div class="passenger">
-              <div class="passenger-name">
-                <h3>CIUDAD MAÑANA (test)</h3>
-              </div>
-            </div>
-            <div class="passenger-payout">
-              <div class="month-payment ene">PAGÓ</div>
-              <div class="month-payment feb">NO PAGÓ</div>
-              <div class="month-payment mar">PAGÓ</div>
-              <div class="month-payment abr">PAGÓ</div>
-              <div class="month-payment may">NO PAGÓ</div>
-              <div class="month-payment jun">NO PAGÓ</div>
-              <div class="month-payment jul">NO PAGÓ</div>
-              <div class="month-payment ago">PAGÓ</div>
-              <div class="month-payment sep">PAGÓ</div>
-              <div class="month-payment oct">&nbsp;</div>
-              <div class="month-payment nov">&nbsp;</div>
-              <div class="month-payment dic">&nbsp;</div>
-            </div>
-          </div>
-
-          <div class="container-pass">
-            <div class="passenger">
-              <div class="passenger-name">
-                <h3>Jose Díaz</h3>
-              </div>
-            </div>
-            <div class="passenger-payout">
-              <div class="month-payment ene">PAGÓ</div>
-              <div class="month-payment feb">NO PAGÓ</div>
-              <div class="month-payment mar">PAGÓ</div>
-              <div class="month-payment abr">PAGÓ</div>
-              <div class="month-payment may">NO PAGÓ</div>
-              <div class="month-payment jun">PAGÓ</div>
-              <div class="month-payment jul">PAGÓ</div>
-              <div class="month-payment ago">NO PAGÓ</div>
-              <div class="month-payment sep">NO PAGÓ</div>
-              <div class="month-payment oct">PAGÓ</div>
-              <div class="month-payment nov">&nbsp;</div>
-              <div class="month-payment dic">&nbsp;</div>
-            </div>
-          </div>
-          <div class="container-pass">
-            <div class="passenger">
-              <div class="passenger-name">
-                <h3>Gabriel Gonzalez</h3>
-              </div>
-            </div>
-            <div class="passenger-payout">
-              <div class="month-payment ene">PAGÓ</div>
-              <div class="month-payment feb">NO PAGÓ</div>
-              <div class="month-payment mar">PAGÓ</div>
-              <div class="month-payment abr">PAGÓ</div>
-              <div class="month-payment may">NO PAGÓ</div>
-              <div class="month-payment jun">NO PAGÓ</div>
-              <div class="month-payment jul">NO PAGÓ</div>
-              <div class="month-payment ago">NO PAGÓ</div>
-              <div class="month-payment sep">NO PAGÓ</div>
-              <div class="month-payment oct">PAGÓ</div>
-              <div class="month-payment nov">PAGÓ</div>
-              <div class="month-payment dic">&nbsp;</div>
-            </div>
-          </div>
-        </div>
-        <div class="passenger-container section-city" id="afternoon-city">
-          <div class="container-pass">
-            <div class="passenger">
-              <div class="passenger-name">
-                <h3>CIUDAD TARDE (test)</h3>
-              </div>
-            </div>
-            <div class="passenger-payout">
-              <div class="month-payment ene">PAGÓ</div>
-              <div class="month-payment feb">NO PAGÓ</div>
-              <div class="month-payment mar">PAGÓ</div>
-              <div class="month-payment abr">PAGÓ</div>
-              <div class="month-payment may">PAGÓ</div>
-              <div class="month-payment jun">PAGÓ</div>
-              <div class="month-payment jul">PAGÓ</div>
-              <div class="month-payment ago">NO PAGÓ</div>
-              <div class="month-payment sep">NO PAGÓ</div>
-              <div class="month-payment oct">NO PAGÓ</div>
-              <div class="month-payment nov">NO PAGÓ</div>
-              <div class="month-payment dic">PAGÓ</div>
-            </div>
-          </div>
-
-          <div class="container-pass">
-            <div class="passenger">
-              <div class="passenger-name">
-                <h3>Jose Díaz</h3>
-              </div>
-            </div>
-            <div class="passenger-payout">
-              <div class="month-payment ene">PAGÓ</div>
-              <div class="month-payment feb">NO PAGÓ</div>
-              <div class="month-payment mar">PAGÓ</div>
-              <div class="month-payment abr">PAGÓ</div>
-              <div class="month-payment may">PAGÓ</div>
-              <div class="month-payment jun">PAGÓ</div>
-              <div class="month-payment jul">PAGÓ</div>
-              <div class="month-payment ago">PAGÓ</div>
-              <div class="month-payment sep">PAGÓ</div>
-              <div class="month-payment oct">PAGÓ</div>
-              <div class="month-payment nov">NO PAGÓ</div>
-              <div class="month-payment dic">NO PAGÓ</div>
-            </div>
-          </div>
-          <div class="container-pass">
-            <div class="passenger">
-              <div class="passenger-name">
-                <h3>Gabriel Gonzalez</h3>
-              </div>
-            </div>
-            <div class="passenger-payout">
-              <div class="month-payment ene">PAGÓ</div>
-              <div class="month-payment feb">NO PAGÓ</div>
-              <div class="month-payment mar">PAGÓ</div>
-              <div class="month-payment abr">PAGÓ</div>
-              <div class="month-payment may">NO PAGÓ</div>
-              <div class="month-payment jun">NO PAGÓ</div>
-              <div class="month-payment jul">NO PAGÓ</div>
-              <div class="month-payment ago">NO PAGÓ</div>
-              <div class="month-payment sep">PAGÓ</div>
-              <div class="month-payment oct">PAGÓ</div>
-              <div class="month-payment nov">PAGÓ</div>
-              <div class="month-payment dic">PAGÓ</div>
-            </div>
-          </div>
-        </div>
-        <div class="passenger-container section-colony" id="morning-colony">
-          <div class="container-pass">
-            <div class="passenger">
-              <div class="passenger-name">
-                <h3>COLONIA MAÑANA (test)</h3>
-              </div>
-            </div>
-            <div class="passenger-payout">
-              <div class="month-payment ene">PAGÓ</div>
-              <div class="month-payment feb">NO PAGÓ</div>
-              <div class="month-payment mar">PAGÓ</div>
-              <div class="month-payment abr">PAGÓ</div>
-              <div class="month-payment may">PAGÓ</div>
-              <div class="month-payment jun">PAGÓ</div>
-              <div class="month-payment jul">PAGÓ</div>
-              <div class="month-payment ago">PAGÓ</div>
-              <div class="month-payment sep">PAGÓ</div>
-              <div class="month-payment oct">PAGÓ</div>
-              <div class="month-payment nov">PAGÓ</div>
-              <div class="month-payment dic">PAGÓ</div>
-            </div>
-          </div>
-          <div class="container-pass">
-            <div class="passenger">
-              <div class="passenger-name">
-                <h3>Fabian Herrera</h3>
-              </div>
-            </div>
-            <div class="passenger-payout">
-              <div class="month-payment ene">PAGÓ</div>
-              <div class="month-payment feb">NO PAGÓ</div>
-              <div class="month-payment mar">PAGÓ</div>
-              <div class="month-payment abr">PAGÓ</div>
-              <div class="month-payment may">NO PAGÓ</div>
-              <div class="month-payment jun">NO PAGÓ</div>
-              <div class="month-payment jul">NO PAGÓ</div>
-              <div class="month-payment ago">NO PAGÓ</div>
-              <div class="month-payment sep">NO PAGÓ</div>
-              <div class="month-payment oct">NO PAGÓ</div>
-              <div class="month-payment nov">NO PAGÓ</div>
-              <div class="month-payment dic">NO PAGÓ</div>
-            </div>
-          </div>
-
-          <div class="container-pass">
-            <div class="passenger">
-              <div class="passenger-name">
-                <h3>Gastón Hodar</h3>
-              </div>
-            </div>
-            <div class="passenger-payout">
-              <div class="month-payment ene">PAGÓ</div>
-              <div class="month-payment feb">NO PAGÓ</div>
-              <div class="month-payment mar">PAGÓ</div>
-              <div class="month-payment abr">PAGÓ</div>
-              <div class="month-payment may">&nbsp;</div>
-              <div class="month-payment jun">&nbsp;</div>
-              <div class="month-payment jul">&nbsp;</div>
-              <div class="month-payment ago">&nbsp;</div>
-              <div class="month-payment sep">&nbsp;</div>
-              <div class="month-payment oct">&nbsp;</div>
-              <div class="month-payment nov">&nbsp;</div>
-              <div class="month-payment dic">&nbsp;</div>
-            </div>
-          </div>
-          <div class="container-pass">
-            <div class="passenger">
-              <div class="passenger-name">
-                <h3>Susana Robles</h3>
-              </div>
-            </div>
-            <div class="passenger-payout">
-              <div class="month-payment ene">PAGÓ</div>
-              <div class="month-payment feb">NO PAGÓ</div>
-              <div class="month-payment mar">PAGÓ</div>
-              <div class="month-payment abr">PAGÓ</div>
-              <div class="month-payment may">&nbsp;</div>
-              <div class="month-payment jun">&nbsp;</div>
-              <div class="month-payment jul">&nbsp;</div>
-              <div class="month-payment ago">&nbsp;</div>
-              <div class="month-payment sep">&nbsp;</div>
-              <div class="month-payment oct">&nbsp;</div>
-              <div class="month-payment nov">&nbsp;</div>
-              <div class="month-payment dic">&nbsp;</div>
-            </div>
-          </div>
-        </div>
-        <div class="passenger-container section-colony" id="afternoon-colony">
-          <div class="container-pass">
-            <div class="passenger">
-              <div class="passenger-name">
-                <h3>COLONIA TARDE (test)</h3>
-              </div>
-            </div>
-            <div class="passenger-payout">
-              <div class="month-payment ene">PAGÓ</div>
-              <div class="month-payment feb">NO PAGÓ</div>
-              <div class="month-payment mar">PAGÓ</div>
-              <div class="month-payment abr">PAGÓ</div>
-              <div class="month-payment may">&nbsp;</div>
-              <div class="month-payment jun">&nbsp;</div>
-              <div class="month-payment jul">&nbsp;</div>
-              <div class="month-payment ago">&nbsp;</div>
-              <div class="month-payment sep">&nbsp;</div>
-              <div class="month-payment oct">&nbsp;</div>
-              <div class="month-payment nov">&nbsp;</div>
-              <div class="month-payment dic">&nbsp;</div>
-            </div>
-          </div>
-
-          <div class="container-pass">
-            <div class="passenger">
-              <div class="passenger-name">
-                <h3>Jose Díaz</h3>
-              </div>
-            </div>
-            <div class="passenger-payout">
-              <div class="month-payment ene">PAGÓ</div>
-              <div class="month-payment feb">NO PAGÓ</div>
-              <div class="month-payment mar">PAGÓ</div>
-              <div class="month-payment abr">PAGÓ</div>
-              <div class="month-payment may">&nbsp;</div>
-              <div class="month-payment jun">&nbsp;</div>
-              <div class="month-payment jul">&nbsp;</div>
-              <div class="month-payment ago">&nbsp;</div>
-              <div class="month-payment sep">&nbsp;</div>
-              <div class="month-payment oct">&nbsp;</div>
-              <div class="month-payment nov">&nbsp;</div>
-              <div class="month-payment dic">&nbsp;</div>
-            </div>
-          </div>
-          <div class="container-pass">
-            <div class="passenger">
-              <div class="passenger-name">
-                <h3>Gabriel Gonzalez</h3>
-              </div>
-            </div>
-            <div class="passenger-payout">
-              <div class="month-payment ene">PAGÓ</div>
-              <div class="month-payment feb">NO PAGÓ</div>
-              <div class="month-payment mar">PAGÓ</div>
-              <div class="month-payment abr">PAGÓ</div>
-              <div class="month-payment may">&nbsp;</div>
-              <div class="month-payment jun">&nbsp;</div>
-              <div class="month-payment jul">&nbsp;</div>
-              <div class="month-payment ago">&nbsp;</div>
-              <div class="month-payment sep">&nbsp;</div>
-              <div class="month-payment oct">&nbsp;</div>
-              <div class="month-payment nov">&nbsp;</div>
-              <div class="month-payment dic">&nbsp;</div>
-            </div>
-          </div>
-        </div>
+        <div class="passenger-container section-city" id="morning-city"></div>
+        <div class="passenger-container section-city" id="afternoon-city"></div>
+        <div
+          class="passenger-container section-colony"
+          id="morning-colony"
+        ></div>
+        <div
+          class="passenger-container section-colony"
+          id="afternoon-colony"
+        ></div>
       </div>
     </section>
   </body>
 
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
   <script src="./js/index.js"></script>
 </html>

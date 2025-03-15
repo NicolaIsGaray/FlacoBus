@@ -31,7 +31,7 @@ header {
 .navbar-name h1 {
   margin: 0;
   background-color: #00377f;
-  padding: 30px;
+  padding: 35.1px;
   text-align: center;
   color: #fff;
   font-weight: bold;
@@ -121,8 +121,73 @@ header {
   right: 13.5vw;
 }
 
+#codeFormContainer {
+  position: fixed;
+  width: 100%;
+}
+
+.form-container {
+  display: flex;
+  background: #005fdb;
+  justify-content: center;
+  padding: 28vh 0px;
+  flex-direction: column;
+  align-items: center;
+}
+
+#codeForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #004aad;
+  width: 16vw;
+  padding: 4%;
+  border-radius: 20px;
+  color: #fff;
+  box-shadow: 0 0px 10px rgba(255, 255, 255, 0.9);
+}
+
+#codeForm input {
+  margin: 10px 0;
+  padding: 5px;
+  font-size: 16px;
+  text-align: center;
+}
+
+input:focus-visible {
+  outline: none;
+}
+
+#codeForm button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#adminContent {
+  display: none;
+}
+
+#message {
+  color: red;
+  margin-top: 10px;
+}
+
+.sliding a {
+  display: none;
+  position: fixed;
+  background: white;
+  padding: 4%;
+  bottom: 6vh;
+  right: 8vw;
+  border: 4px solid #004aad;
+  border-radius: 30%;
+  font-weight: 900;
+  color: #004aad;
+  text-decoration: none;
+}
+
 .add-button-box {
-  background-color: #0054c2;
   display: flex;
   justify-content: center;
   padding-top: 10vh;
@@ -157,7 +222,7 @@ input[type="submit"] {
   color: #000000;
   padding: 1.5vh 4vw;
   margin-top: 4vh;
-  border: 2px solid #002352;
+  border: 1px solid #fff;
   border-radius: 20px;
   cursor: pointer;
   font-weight: 800;
@@ -166,7 +231,8 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-  background-color: #002352;
+  background-color: #005213;
+  border: 1px solid #fff;
   color: #fff;
 }
 
@@ -209,7 +275,7 @@ input[type="submit"]:hover {
 }
 
 .locations label {
-  background-color: #9b9b9b;
+  background-color: #fff;
   color: #000000;
   cursor: pointer;
   padding: 20px;
@@ -217,10 +283,19 @@ input[type="submit"]:hover {
   text-align: center;
   border-radius: 10px;
   font-weight: bold;
+  display: inline-block;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid #fff;
 }
 
 .locations label > input[type="checkbox"] {
   display: none;
+}
+
+.locations label:has(input[type="checkbox"]:checked) {
+  background-color: #00377f;
+  border: 1px solid #fff;
+  color: white;
 }
 
 .input-field {
@@ -241,11 +316,13 @@ input[type="submit"]:hover {
   padding: 10px;
   margin: 10px 0px;
   text-align: center;
+  cursor: pointer;
 }
 
 .passenger-list {
   display: flex;
   flex-direction: column;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 .top-section {
@@ -355,11 +432,11 @@ input[type="submit"]:hover {
     align-items: center;
   }
 
-  .mobile-version .location-switch{ 
+  .mobile-version .location-switch {
     display: flex;
   }
 
-  .mobile-version .shift-switch{ 
+  .mobile-version .shift-switch {
     display: flex;
   }
 
@@ -388,6 +465,10 @@ input[type="submit"]:hover {
 
   .navbar-subtitle span {
     font-size: xx-large;
+  }
+
+  .sliding a {
+    display: block;
   }
 
   .add-button-box {
@@ -506,6 +587,7 @@ input[type="submit"]:hover {
     margin: 4vh 0;
     height: 22vh;
     overflow: hidden;
+    border: 1px solid darkgrey;
   }
 
   .passenger {
@@ -531,6 +613,7 @@ input[type="submit"]:hover {
     width: 100%;
     align-items: center;
     margin: 4vh 0;
+    box-shadow: none;
   }
 
   .passenger-box {

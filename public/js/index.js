@@ -116,7 +116,6 @@ shiftAfternoon.addEventListener("click", () => {
   shiftAfternoon.style.transform = "translateY(-30px)";
   shiftClock.style.transform = "rotate(0deg)";
 });
-
 //< SHIFT SWITCHING />
 
 Switcher();
@@ -125,69 +124,87 @@ Switcher();
 // Función para obtener el nombre del mes en español
 function getMonthName(monthIndex) {
   const months = [
-    'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
-    'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre",
   ];
   return months[monthIndex];
 }
 
 // Función para actualizar la visualización de los meses
-function updateMonthDisplay(monthClass, monthName, year) {
-  // Oculta todos los meses en todos los pasajeros
-  document.querySelectorAll('.month-payment').forEach(month => {
-    month.classList.remove('active');
-  });
+function updateMonthDisplay(monthId, monthName, year) {
+  // Verificar si estamos en modo móvil (ancho de pantalla menor a 768px)
+  if (window.innerWidth < 768) {
+    document.querySelectorAll(".month-payment").forEach((month) => {
+      month.style.display = "none";
+    });
 
-  // Muestra el mes actual en todos los pasajeros
-  document.querySelectorAll(`.${monthClass}`).forEach(month => {
-    month.classList.add('active');
-  });
+    // Muestra solo el mes actual en todos los contenedores
+    document.querySelectorAll(".container-pass").forEach((container) => {
+      const currentMonthElement = container.querySelector(`#${monthId}`);
+      if (currentMonthElement) {
+        currentMonthElement.style.display = "flex";
+      }
+    });
+  }
 
-  // Actualiza el texto del mes actual en el slider
-  document.getElementById('currentMonth').textContent = `${monthName} ${year}`;
+  document.getElementById("currentMonth").textContent = `${monthName} ${year}`;
 }
 
-// Inicializa el slider
 function initSlider() {
-  const prevMonthButton = document.getElementById('prevMonth');
-  const nextMonthButton = document.getElementById('nextMonth');
+  const prevMonthButton = document.getElementById("prevMonth");
+  const nextMonthButton = document.getElementById("nextMonth");
 
-  let currentDate = new Date(); // Fecha inicial (mes actual)
+  let currentDate = new Date();
 
   function handleMonthChange() {
     const monthIndex = currentDate.getMonth();
     const year = currentDate.getFullYear();
-    const monthClass = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'][monthIndex];
+    const monthId = [
+      "ene",
+      "feb",
+      "mar",
+      "abr",
+      "may",
+      "jun",
+      "jul",
+      "ago",
+      "sep",
+      "oct",
+      "nov",
+      "dic",
+    ][monthIndex];
     const monthName = getMonthName(monthIndex);
 
-    // Actualiza la visualización de los meses
-    updateMonthDisplay(monthClass, monthName, year);
+    updateMonthDisplay(monthId, monthName, year);
   }
 
-  // Evento para el botón "Anterior"
-  prevMonthButton.addEventListener('click', () => {
+  prevMonthButton.addEventListener("click", () => {
     currentDate.setMonth(currentDate.getMonth() - 1);
     handleMonthChange();
   });
 
-  // Evento para el botón "Siguiente"
-  nextMonthButton.addEventListener('click', () => {
+  nextMonthButton.addEventListener("click", () => {
     currentDate.setMonth(currentDate.getMonth() + 1);
     handleMonthChange();
   });
 
-  // Inicializa la visualización del mes actual
   handleMonthChange();
 }
-
-// Inicializa el slider cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', initSlider);
 //< ARRAY DE MESES />
 
 //< ARRAY DE TURNO >
 const shift = ["Mañana", "Tarde"];
 
-// Obtener elementos del DOM
 const currentShiftElement = document.getElementById("currentShift");
 const prevShiftButton = document.getElementById("prevShift");
 const nextShiftButton = document.getElementById("nextShift");
@@ -196,10 +213,8 @@ let currentShiftIndex = 0;
 
 // Función para actualizar el turno
 const updateShift = () => {
-  // Actualizar el texto del turno actual
   currentShiftElement.textContent = shift[currentShiftIndex];
 
-  // Actualizar los IDs de los turnos
   if (shift[currentShiftIndex] === "Mañana") {
     shiftMorning.id = "active-shift";
     shiftAfternoon.id = "";
@@ -229,14 +244,12 @@ nextShiftButton.addEventListener("click", () => {
   updateShift();
 });
 
-// Inicializar el turno al cargar la página
 updateShift();
 //< ARRAY DE TURNO />
 
 //< ARRAY DE LOCALIDAD >
 const locations = ["Ciudad", "Colonia"];
 
-// Obtener elementos del DOM
 const currentLocationElement = document.getElementById("currentLocation");
 const prevLocationButton = document.getElementById("prevLocation");
 const nextLocationButton = document.getElementById("nextLocation");
@@ -245,10 +258,8 @@ let currentLocationIndex = 0;
 
 // Función para actualizar la localidad
 const updateLocation = () => {
-  // Actualizar el texto de la localidad actual
   currentLocationElement.textContent = locations[currentLocationIndex];
 
-  // Actualizar los IDs de las localidades
   if (locations[currentLocationIndex] === "Ciudad") {
     locationCity.id = "active-location";
     locationColony.id = "";
@@ -280,3 +291,88 @@ nextLocationButton.addEventListener("click", () => {
 
 updateLocation();
 //< ARRAY DE LOCALIDAD />
+
+async function loadPassengerData() {
+  try {
+    const response = await axios.get(`/admin/pasajero`);
+    const pasajeros = response.data;
+
+    pasajeros.forEach((pasajero) => {
+      const morningCity = document.getElementById("morning-city");
+      const afternoonCity = document.getElementById("afternoon-city");
+      const morningColony = document.getElementById("morning-colony");
+      const afternoonColony = document.getElementById("afternoon-colony");
+
+      const containerPass = document.createElement("div");
+      containerPass.classList.add("container-pass");
+
+      const passengerBox = document.createElement("div");
+      passengerBox.classList.add("passenger");
+
+      const paymentContainer = document.createElement("div");
+      paymentContainer.classList.add("passenger-payout");
+      paymentContainer.setAttribute("data-passenger-id", pasajero._id);
+
+      const passengerName = document.createElement("div");
+      passengerName.classList.add("passenger-name");
+      passengerName.innerHTML = `<h3>${pasajero.name}</h3>`;
+
+      if (pasajero.shift === "morning" || pasajero.shift === "afternoon") {
+        let mainContainer;
+        if (pasajero.location.includes("ciudad")) {
+          mainContainer =
+            pasajero.shift === "morning" ? morningCity : afternoonCity;
+        } else if (pasajero.location.includes("colonia")) {
+          mainContainer =
+            pasajero.shift === "morning" ? morningColony : afternoonColony;
+        }
+
+        if (mainContainer) {
+          passengerBox.append(passengerName);
+          containerPass.append(passengerBox);
+          containerPass.append(paymentContainer);
+          mainContainer.append(containerPass);
+        }
+      }
+
+      const months = [
+        "ene",
+        "feb",
+        "mar",
+        "abr",
+        "may",
+        "jun",
+        "jul",
+        "ago",
+        "sep",
+        "oct",
+        "nov",
+        "dic",
+      ];
+      months.forEach((month) => {
+        const monthElement = document.createElement("div");
+
+        monthElement.classList.add("month-payment");
+        monthElement.id = month;
+
+        if (pasajero.payments[month]) {
+          monthElement.textContent = "PAGÓ";
+          monthElement.style.color = "green";
+          monthElement.classList.add("paid");
+        } else {
+          monthElement.innerHTML = "NO PAGÓ";
+          monthElement.style.color = "red";
+          monthElement.classList.add("not-paid");
+        }
+
+        paymentContainer.appendChild(monthElement);
+      });
+    });
+
+    initSlider();
+  } catch (error) {
+    console.error("Error al cargar los datos del pasajero:", error);
+  }
+}
+
+loadPassengerData();
