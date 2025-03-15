@@ -503,7 +503,6 @@ const passengerSend = async () => {
 registerButton.addEventListener("click", (e) => {
   e.preventDefault();
   passengerSend();
-  window.location.reload();
 });
 // <-- REGISTRAR PASAJERO --/>
 

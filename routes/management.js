@@ -1,7 +1,8 @@
 const express = require("express");
 const adminRoute = express.Router();
-const session = require('express-session');
-const dotenv = require('dotenv');
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
+const dotenv = require("dotenv");
 
 const AccessCode = require("../models/Gen");
 const Pasajero = require("../models/Pasajero");
@@ -13,24 +14,34 @@ const GENERATOR = process.env.GEN;
 const AUTH = process.env.AUTHER;
 const KEY = process.env.KEY_INDEX;
 
+const MONGO_U = process.env.MONGO_USR;
+const MONGO_P = process.env.MONGO_PSWRD
+
 function isAuthenticated(req, res, next) {
   if (req.session.isAuthenticated) {
     next();
   } else {
-    res.status(401).json({ message: 'No autenticado' });
+    res.status(401).json({ message: "No autenticado" });
   }
 }
 
-adminRoute.use(session({
-  secret: KEY,
-  resave: false,
-  saveUninitialized: true,
-  cookie: { 
-    secure: true,
-    httpOnly: true,
-    maxAge: 1000 * 60 * 60 * 24
-  }
-}));
+adminRoute.use(
+  session({
+    secret: KEY,
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: `mongodb+srv://${MONGO_U}:${MONGO_P}@dataregister.nh3ts.mongodb.net/?retryWrites=true&w=majority&appName=DataRegister`,
+      collectionName: "sessions",
+      ttl: 14 * 24 * 60 * 60,
+    }),
+    cookie: {
+      secure: true,
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24 * 14, // 14 días
+    },
+  })
+);
 
 function generateAccessCode() {
   return Math.floor(1000 + Math.random() * 9000); // Código de 4 dígitos
@@ -136,11 +147,9 @@ adminRoute.put("/pasajero/:id/pagos", isAuthenticated, async (req, res) => {
   }
 
   if (typeof hasPaid !== "boolean") {
-    return res
-      .status(400)
-      .json({
-        message: "El campo hasPaid debe ser un booleano (true o false)",
-      });
+    return res.status(400).json({
+      message: "El campo hasPaid debe ser un booleano (true o false)",
+    });
   }
 
   try {
