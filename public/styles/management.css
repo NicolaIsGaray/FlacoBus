@@ -141,7 +141,7 @@ header {
   align-items: center;
   background: #004aad;
   width: 16vw;
-  padding: 4%;
+  padding: 12%;
   border-radius: 20px;
   color: #fff;
   box-shadow: 0 0px 10px rgba(255, 255, 255, 0.9);
@@ -465,6 +465,10 @@ input[type="submit"]:hover {
 
   .navbar-subtitle span {
     font-size: xx-large;
+  }
+
+  #codeForm {
+    width: 70%;
   }
 
   .sliding a {
