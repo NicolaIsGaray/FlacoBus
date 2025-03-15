@@ -28,7 +28,7 @@ adminRoute.use(
       ttl: 14 * 24 * 60 * 60,
     }),
     cookie: {
-      secure: false,
+      secure: true,
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24 * 14, // 14 días
     },
