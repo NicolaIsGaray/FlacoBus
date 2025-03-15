@@ -83,7 +83,7 @@ adminRoute.get("/config", (req, res) => {
   });
 });
 
-adminRoute.get("/pasajero", isAuthenticated, async (req, res) => {
+adminRoute.get("/pasajero", async (req, res) => {
   try {
     const pasajeros = await Pasajero.find();
     res.json(pasajeros);
