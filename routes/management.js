@@ -131,7 +131,7 @@ adminRoute.post("/add-pasajero", isAuthenticated, async (req, res) => {
   }
 });
 
-adminRoute.post('/update-pasajero', isAuthenticated, async (req, res) => {
+adminRoute.post('/update-pasajero/:id', isAuthenticated, async (req, res) => {
   const { id } = req.params;
   const { name } = req.body;
 

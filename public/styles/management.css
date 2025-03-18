@@ -369,6 +369,25 @@ input[type="submit"]:hover {
   text-align: center;
 }
 
+.passenger-modifier-box {
+  display: flex;
+  margin-top: 2vh;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.passenger-modifier-box button {
+  width: 25%;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 5px;
+  color: #004aad;
+  cursor: pointer;
+  border: 1px solid #fff;
+  transition: all 0.3s ease-in-out;
+}
+
 .container-pass {
   display: flex;
   flex-direction: row;
@@ -589,7 +608,7 @@ input[type="submit"]:hover {
     flex-direction: column;
     align-items: center;
     margin: 4vh 0;
-    height: 22vh;
+    height: 27vh;
     overflow: hidden;
     border: 1px solid darkgrey;
   }

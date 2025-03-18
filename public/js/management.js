@@ -384,6 +384,23 @@ async function loadPassengerData() {
       passengerName.classList.add("passenger-name");
       passengerName.innerHTML = `<h3>${pasajero.name}</h3>`;
 
+      const passengerModifier = document.createElement("div");
+      const passEdit = document.createElement("button");
+      const passDel = document.createElement("button");
+
+      passengerModifier.setAttribute("data-passenger-id", pasajero._id);
+
+      passengerModifier.classList.add("passenger-modifier-box");
+      passEdit.classList.add("passenger-edit");
+      passDel.classList.add("passenger-delete");
+
+      passEdit.innerHTML = "Editar";
+      passDel.innerHTML = "Eliminar";
+
+      passengerModifier.append(passEdit);
+      passengerModifier.append(passDel);
+      passengerName.append(passengerModifier);
+
       // Verificar el turno y la ubicación del pasajero
       if (pasajero.shift === "morning" || pasajero.shift === "afternoon") {
         let mainContainer;
@@ -439,6 +456,7 @@ async function loadPassengerData() {
 
     initSlider();
     assignPaymentEvents();
+    getContainers();
   } catch (error) {
     console.error("Error al cargar los datos del pasajero:", error);
   }
@@ -499,7 +517,6 @@ const passengerSend = async () => {
   }
 };
 
-// Evento para el botón "Registrar"
 registerButton.addEventListener("click", (e) => {
   e.preventDefault();
   passengerSend();
@@ -507,10 +524,126 @@ registerButton.addEventListener("click", (e) => {
 });
 // <-- REGISTRAR PASAJERO --/>
 
+//GET CONTAINER MODIFIER
+const getContainers = () => {
+  const containers = document.querySelectorAll(".container-pass");
+  containers.forEach((container) => {
+    if (container) {
+      container.addEventListener("click", (e) => {
+        if (e.target.classList.contains("passenger-delete")) {
+          e.preventDefault();
+          const passengerId = e.target
+            .closest("[data-passenger-id]")
+            .getAttribute("data-passenger-id");
+          selectToRemove(passengerId);
+        }
+        if (e.target.classList.contains("passenger-edit")) {
+          e.preventDefault();
+          const passengerId = e.target
+            .closest("[data-passenger-id]")
+            .getAttribute("data-passenger-id");
+          selectToEdit(passengerId);
+        }
+      });
+    }
+  });
+};
+
 // <-- ELIMINAR PASAJERO -->
+async function selectToRemove(passengerId) {
+  try {
+    const response = await axios.get(`/admin/pasajero`);
+    const pasajeros = response.data;
+    const pasajero = pasajeros.find((p) => p._id === passengerId);
 
+    if (pasajero) {
+      const passengerName = pasajero.name;
 
+      Swal.fire({
+        title: `¿Deseas eliminar a ${passengerName} de la agenda?`,
+        text: "El pasajero dejará de estar en la agenda",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Eliminar",
+        cancelButtonText: "No Eliminar",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          await removePassenger(passengerId);
+
+          const passengerContainer = document
+            .querySelector(`[data-passenger-id="${passengerId}"]`)
+            .closest(".container-pass");
+          if (passengerContainer) {
+            passengerContainer.remove();
+          }
+        }
+      });
+    }
+  } catch (error) {
+    console.error("No se pudo eliminar el pasajero:", error.message);
+  }
+}
+
+async function removePassenger(passengerId) {
+  try {
+    await axios.delete(`/admin/pasajero/${passengerId}`);
+    Swal.fire("Eliminado!", "El pasajero ha sido eliminado.", "success");
+  } catch (error) {
+    console.error("No se pudo eliminar el pasajero:", error.message);
+    Swal.fire("Error!", "No se pudo eliminar el pasajero.", "error");
+  }
+}
 // <-- ELIMINAR PASAJERO --/>
+
+// <-- EDITAR PASAJERO -->
+async function selectToEdit(passengerId) {
+  try {
+    const response = await axios.get(`/admin/pasajero`);
+    const pasajeros = response.data;
+    const pasajero = pasajeros.find((p) => p._id === passengerId);
+
+    if (pasajero) {
+
+      Swal.fire({
+        title: "Ingrese el nuevo nombre",
+        input: "text",
+        inputLabel: "Nombre completo",
+        inputPlaceholder: "Ej: Juan Pérez",
+        showCancelButton: true,
+        confirmButtonText: "Editar",
+        cancelButtonText: "Cancelar",
+        inputValidator: (value) => {
+          // Validación del input
+          if (!value) {
+            return "Debes ingresar un nombre";
+          }
+        },
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          const name = result.value;
+          await editPassenger(passengerId, name);
+        }
+      });
+    }
+  } catch (error) {
+    console.error("No se pudo eliminar el pasajero:", error.message);
+  }
+}
+
+async function editPassenger(passengerId, name) {
+  try {
+    await axios.post(`/admin/update-pasajero/${passengerId}`, {
+      name
+    });
+    Swal.fire("El nombre ha sido cambiado", "Refresca la página para ver cambios.", "success");
+  } catch (error) {
+    console.error("No se pudo editar el pasajero:", error.message);
+    Swal.fire("Error!", "No se pudo editar el pasajero.", "error");
+  }
+}
+// <-- EDITAR PASAJERO --/>
 
 // <-- EDITAR PAGO -->
 async function assignPaymentEvents() {
@@ -547,7 +680,6 @@ async function assignPaymentEvents() {
 
                 // Actualizar el pago en la base de datos
                 await updatePaymentStatus(passengerId, month, true);
-                console.log(`El pasajero pagó en el mes: ${month}`);
               } else {
                 event.target.textContent = "NO PAGÓ";
                 event.target.classList.remove("paid");
