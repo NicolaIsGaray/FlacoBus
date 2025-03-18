@@ -507,6 +507,11 @@ registerButton.addEventListener("click", (e) => {
 });
 // <-- REGISTRAR PASAJERO --/>
 
+// <-- ELIMINAR PASAJERO -->
+
+
+// <-- ELIMINAR PASAJERO --/>
+
 // <-- EDITAR PAGO -->
 async function assignPaymentEvents() {
   const paymentContainers = document.querySelectorAll(".passenger-payout");

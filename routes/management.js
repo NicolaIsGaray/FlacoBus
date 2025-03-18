@@ -30,7 +30,7 @@ adminRoute.use(
     cookie: {
       secure: false,
       httpOnly: true,
-      maxAge: 1000 * 60 * 60 * 24 * 14, // 14 días
+      maxAge: 1000 * 60 * 60 * 24 * 1,
     },
   })
 );
@@ -43,10 +43,8 @@ adminRoute.post(VALID, async (req, res) => {
     const validCode = await AccessCode.findOne({ code });
 
     if (validCode) {
-      req.session.isAuthenticated = true; // Establece la autenticación
-      console.log("Sesión guardada:", req.session); // Depuración
+      req.session.isAuthenticated = true;
 
-      // Guarda la sesión manualmente
       req.session.save((err) => {
         if (err) {
           console.error("Error al guardar la sesión:", err);
@@ -65,7 +63,6 @@ adminRoute.post(VALID, async (req, res) => {
 });
 
 function isAuthenticated(req, res, next) {
-  console.log("Sesión guardada F:", req.session); // Depuración
   if (req.session.isAuthenticated) {
     next();
   } else {
@@ -133,6 +130,45 @@ adminRoute.post("/add-pasajero", isAuthenticated, async (req, res) => {
     res.status(400).send(error);
   }
 });
+
+adminRoute.post('/update-pasajero', isAuthenticated, async (req, res) => {
+  const { id } = req.params;
+  const { name } = req.body;
+
+  if (!id) {
+    return res.status(400).json({ message: "ID del pasajero es requerido" });
+  }
+
+  try {
+    const pasajero = await Pasajero.findByIdAndUpdate(id, { name }, { new: true });
+    if (!pasajero) {
+      return res.status(404).json({ message: "Pasajero no encontrado" });
+    }
+    res.status(200).json(pasajero);
+  } catch (error) {
+    console.error("Error al actualizar el pasajero:", error);
+    res.status(500).send(error);
+  }
+});
+
+adminRoute.delete("/pasajero/:id", isAuthenticated, async (req, res) => {
+  const { id } = req.params;
+  
+  if (!id) {
+    return res.status(400).json({ message: "ID del pasajero es requerido" });
+  }
+
+  try {
+    const deletedPasajero = await Pasajero.findByIdAndDelete(id);
+    if (!deletedPasajero) {
+      return res.status(404).json({ message: "Pasajero no encontrado" });
+    }
+    res.status(200).json(deletedPasajero);
+  } catch (error) {
+    console.error("Error al eliminar el pasajero:", error);
+    res.status(500).send(error);
+  }
+})
 
 adminRoute.put("/pasajero/:id/pagos", isAuthenticated, async (req, res) => {
   const { id } = req.params;
