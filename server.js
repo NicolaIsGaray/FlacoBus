@@ -15,7 +15,7 @@ app.use(
   })
 );
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 const MONGO_U = process.env.MONGO_USR;
 const MONGO_P = process.env.MONGO_PSWRD;
 
@@ -32,7 +32,8 @@ const connectToMongo = async () => {
             console.log(`Server Online and Connected to DATABASE`);
         })
     } catch (error) {
-        console.log(error);
+        console.error("Failed to connect to MongoDB", error);
+        process.exit(1);
     }
 }
 
